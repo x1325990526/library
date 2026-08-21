@@ -1,0 +1,10 @@
+.books-container {
+    display: flex;
+    gap: 36px;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
