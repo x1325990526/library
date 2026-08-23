@@ -1,3 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+#newbook-form {
+    display: grid;
+    gap: 9px;
+}
+
+
+.form-row input:not([type="checkbox"]){
+    width: 60%;
+}
+
+.newbook-btn {
+    width: 70px;
+    cursor: pointer;
+}
 .books-container {
     display: flex;
     gap: 36px;
@@ -8,3 +34,4 @@
     flex-direction: column;
     gap: 18px;
 }
+
