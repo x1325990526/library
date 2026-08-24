@@ -5,8 +5,26 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310);
 addBookToLibrary("1984", "George Orwell", 328);
 
 const booksContainer = document.querySelector(".books-container");
+const form = document.querySelector("#newbook-form");
+
 
 displayBooks();
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+
+    const title = data.get("title");
+    const author = data.get("author");
+    const pages = Number(data.get("pages"));
+    const isRead = data.has("isread");
+
+    addBookToLibrary(title, author, pages, isRead);
+    
+    displayBooks();
+
+});
 
 function displayBooks() {
     booksContainer.textContent = '';
@@ -42,9 +60,9 @@ function Book(title, author, pages, isRead=false) {
     };
 
 }
-function addBookToLibrary(title, author, pages) {
+function addBookToLibrary(title, author, pages, isRead=false) {
   // take params, create a book then store it in the array
-    const book = new Book(title, author, pages);
+    const book = new Book(title, author, pages, isRead);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
   

@@ -33,11 +33,13 @@
 .books-container {
     display: flex;
     gap: 36px;
+    flex-wrap: wrap;
 }
 
 .book-item {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    
 }
 
