@@ -26,6 +26,17 @@ form.addEventListener("submit", (event) => {
 
 });
 
+booksContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".book-remove");
+
+    
+    if(!button) return;
+
+    removeBookById(button.dataset.bookId);
+
+    displayBooks();
+});
+
 function displayBooks() {
     booksContainer.textContent = '';
     for (const book of myLibrary){
@@ -44,7 +55,12 @@ function displayBooks() {
         const pages = document.createElement("div");
         pages.textContent = `pages: ${book.pages}`;
         bookItem.appendChild(pages);
-
+        
+        const remove = document.createElement("button");
+        remove.textContent = "remove";
+        remove.classList.add("book-remove");
+        remove.setAttribute("data-book-id", `${book.id}`);
+        bookItem.appendChild(remove);
     };
 };
 
@@ -67,6 +83,9 @@ function addBookToLibrary(title, author, pages, isRead=false) {
     myLibrary.push(book);
   
 }
-
-
-
+function removeBookById(id) {
+    const index = myLibrary.findIndex((book) => book.id === id );
+    if(index !== -1){
+        myLibrary.splice(index, 1);
+    }
+}
